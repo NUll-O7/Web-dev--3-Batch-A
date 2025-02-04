@@ -53,12 +53,12 @@ async function handlePromiseAsync(){
   
 
 }
-// function printHello(){
-//     console.log("hello")
-// }
-// handlePromiseAsync()
+function printHello(){
+    console.log("hello")
+}
+handlePromiseAsync()
 
-// printHello()
+printHello()
 
 
 // resolvePromise()
