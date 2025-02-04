@@ -1,26 +1,39 @@
 function placeOrder(drink) {
-    return new Promise(function (resolve, reject) {
-      if (drink === "coffee") {
-        resolve("Order for Coffee Placed.");
-      } else {
-        reject("Order can not be Placed.");
-      }
-    });
+  return new Promise(function (resolve, reject) {
+    if (drink === "coffee") {
+      resolve("Order for Coffee Placed.");
+    } else {
+      reject("Order can not be Placed.");
+    }
+  });
+}
+
+function processOrder(orderPlaced) {
+  return new Promise(function (resolve) {
+    resolve(`${orderPlaced} and Served.`);
+  });
+}
+// Promise chaining
+//   placeOrder("tea").then(function(orderPlaced){
+//       console.log(orderPlaced)
+//       return processOrder(orderPlaced)
+//   }).then(function(finalOrderStatus){
+//     console.log(finalOrderStatus)
+//   }).catch(function(error){
+//   console.log(error)
+//   })
+
+// async Await
+
+async function serverOrder() {
+  try {
+    let orderPlaced = await placeOrder("tea");
+    console.log(orderPlaced);
+
+    let finalOrderStatus = await processOrder(orderPlaced);
+    console.log(finalOrderStatus);
+  } catch (error) {
+    console.log(error);
   }
-  
-  function processOrder(orderPlaced) {
-    return new Promise(function (resolve) {
-      resolve(`${orderPlaced} and Served.`);
-    });
-  }
-  
-  placeOrder('coffee').then(function(orderStatus) {
-      console.log(orderStatus)
-      return orderStatus
-  }).then(function(orderStatus) {
-      let orderIsProcessed = processOrder(orderStatus)
-      console.log(orderIsProcessed)
-      return orderIsProcessed
-  }).then(function(orderIsProcessed) {
-      console.log(orderIsProcessed)
-  })
+}
+serverOrder();
