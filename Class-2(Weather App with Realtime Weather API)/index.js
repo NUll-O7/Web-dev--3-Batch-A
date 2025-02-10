@@ -50,7 +50,7 @@ let endpoint = `http://api.weatherapi.com/v1/current.json?key=35af7ff606db422880
 
 
 function updateFields(location , tandD , temp , condition , conditionIcon){
-   tempratureField.innerText = temp
+   tempratureField.innerText = `${temp} C`
    locationField.innerText = location
    timeAndDateField.innerText = tandD
    conditionField.innerText = condition
