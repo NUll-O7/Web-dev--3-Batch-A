@@ -18,9 +18,9 @@
     <div id="root"></div>
 
     <style>
-        .heading_1{
-            color: blue;
-        }
+      .heading_1 {
+        color: blue;
+      }
     </style>
 
     <!-- Write JS code to have a heading h1 
@@ -33,16 +33,21 @@
       //   const rootElement = document.querySelector('#root')
       //   rootElement.appendChild(headingElement)
 
+      //    createElement(type , props , children)
+      let rootElement = document.getElementById("root");
 
-     //    createElement(type , props , children)
-     let rootElement = document.getElementById('root')
+      let headingElement = React.createElement(
+        "h1",
+        {
+          class: "heading_1",
+          style: { fontSize: "4rem", backgroundColor: "red" },
+        },
+        "Hello from React"
+      );
+      // (element , container , callback)
+      ReactDOM.render(headingElement, rootElement);
 
-     let headingElement= React.createElement('h1' , {class:'heading_1' , style:{fontSize : '4rem' , backgroundColor:'red'}} , 'Hello from React');
-    // (element , container , callback)
-     ReactDOM.render(headingElement, rootElement) 
-    
-
-     console.log(headingElement) 
+      console.log(headingElement);
     </script>
   </body>
 </html>
