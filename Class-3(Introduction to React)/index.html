@@ -1,17 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
 
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
+  </head>
+  <body>
     <div id="root"></div>
 
+    <style>
+        .heading_1{
+            color: blue;
+        }
+    </style>
 
     <!-- Write JS code to have a heading h1 
     that says Hello from JS and append it inside the root -->
+
+    <script>
+      //   const headingElement = document.createElement("h1")
+      //   headingElement.innerText = 'Hello from JS'
+
+      //   const rootElement = document.querySelector('#root')
+      //   rootElement.appendChild(headingElement)
+
+
+     //    createElement(type , props , children)
+     let rootElement = document.getElementById('root')
+
+     let headingElement= React.createElement('h1' , {class:'heading_1' , style:{fontSize : '4rem' , backgroundColor:'red'}} , 'Hello from React');
+    // (element , container , callback)
+     ReactDOM.render(headingElement, rootElement) 
     
-</body>
+
+     console.log(headingElement) 
+    </script>
+  </body>
 </html>
