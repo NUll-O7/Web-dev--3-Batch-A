@@ -9,5 +9,5 @@ function Card({ title, description }) {
     </div>
   );
 }
-
+2
 export default Card;
