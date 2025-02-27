@@ -2,6 +2,7 @@ import "./App.css";
 import Card from "./components/Card";
 import Counter from "./components/Counter";
 import Form from "./components/Form";
+import GetData from "./components/GetData";
 import Navbar from "./components/Navbar";
 import Ue from "./components/Ue";
 
@@ -16,7 +17,7 @@ function App() {
       <Card title='Sunglasses' description='Rayban Glasses' /> */}
       {/* <Counter/> */}
       {/* <Form/> */}
-      <Ue/>
+       <GetData/>
     </>
   );
 }
