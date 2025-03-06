@@ -1,16 +1,4 @@
-Here are 15 React problems that require building something while using only `useState`, `useEffect`, spread operator, rendering lists, state, and props. Each problem follows a structured format, including:
 
-- **Problem Statement**
-- **Requirements**
-- **Hints**
-- **Solution Approach**
-- **Example**
-- **Starter Code**
-- **Complete Solution**
-- **Test Cases**
-- **Predefined CSS (if needed)**
-
----
 
 ### 🚀 **1. Todo List**
 #### **Problem Statement**  
