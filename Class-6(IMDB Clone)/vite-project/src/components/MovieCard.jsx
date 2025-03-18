@@ -15,7 +15,7 @@ function MovieCard() {
       </div>
 
       <div className="text-white w-full text-center text-xl p-2 bg-gray-900/70 rounded-lg">
-        
+        Titanic
       </div>
     </div>
   );
