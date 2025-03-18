@@ -1,22 +1,29 @@
 // https://api.themoviedb.org/3/movie/popular?language=en-US&page=1
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import MovieCard from "./MovieCard";
 import axios from 'axios'
 
 function Movies() {
+
+  const [movies , setMovies] = useState([])
+
   useEffect(() => {
     axios
       .get(
-        `https://api.themoviedb.org/3/movie/popular?api_key=3aec63790d50f3b9fc2efb4c15a8cf99&language=en-US&page=2`
+        `https://api.themoviedb.org/3/movie/popular?api_key=3aec63790d50f3b9fc2efb4c15a8cf99&language=en-US&page=1`
       )
       .then((response) => {
-        console.log(response.data);
+        console.log(response.data.results)
+        setMovies(response.data.results)
+      
       })
       .catch((error) => {
         console.log(error);
       });
   }, []);
+
+ 
 
   return (
     <div>
@@ -24,14 +31,9 @@ function Movies() {
         <h1>Trending Movies</h1>
       </div>
       <div className="flex justify-evenly flex-wrap gap-8  ">
-        <MovieCard />
-        <MovieCard />
-        <MovieCard />
-        <MovieCard />
-        <MovieCard />
-        <MovieCard />
-        <MovieCard />
-        <MovieCard />
+        {movies.map((movieObj)=>{
+          return <MovieCard movieObj={movieObj}/>
+        })}
       </div>
     </div>
   );
