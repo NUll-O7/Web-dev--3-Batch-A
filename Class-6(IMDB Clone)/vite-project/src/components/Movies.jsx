@@ -1,10 +1,16 @@
 import React from 'react'
+import MovieCard from './MovieCard'
 
 function Movies() {
   return (
     <div>
-         <h3>This is Movies Page</h3>
-    </div>
+       <div className="">
+         <h1>Trending Movies</h1>
+       </div>
+       <div className=" ">
+         <MovieCard />
+       </div>
+     </div>
   )
 }
 
