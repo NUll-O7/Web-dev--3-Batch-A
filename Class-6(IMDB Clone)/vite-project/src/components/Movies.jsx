@@ -7,11 +7,15 @@ import axios from 'axios'
 function Movies() {
 
   const [movies , setMovies] = useState([])
+  const [pageNo , setPageNo] = useState(1)
+
+
+  
 
   useEffect(() => {
     axios
       .get(
-        `https://api.themoviedb.org/3/movie/popular?api_key=3aec63790d50f3b9fc2efb4c15a8cf99&language=en-US&page=1`
+        `https://api.themoviedb.org/3/movie/popular?api_key=3aec63790d50f3b9fc2efb4c15a8cf99&language=en-US&page=${pageNo}`
       )
       .then((response) => {
         console.log(response.data.results)
