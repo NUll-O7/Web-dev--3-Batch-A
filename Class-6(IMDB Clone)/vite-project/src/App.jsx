@@ -28,7 +28,7 @@ function App() {
             element={
               <>
                 <Banner />
-                <Movies handleAddtoWatchList={handleAddToWatchList} />
+                <Movies handleAddtoWatchList={handleAddToWatchList} watchlist={watchlist} />
               </>
             }
           />
