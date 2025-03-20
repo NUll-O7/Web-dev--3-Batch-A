@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from "react";
 import MovieCard from "./MovieCard";
 import axios from 'axios'
+import Pagination from "./Pagination";
 
 function Movies() {
 
@@ -10,7 +11,7 @@ function Movies() {
   const [pageNo , setPageNo] = useState(1)
 
 
-  
+
 
   useEffect(() => {
     axios
@@ -39,6 +40,8 @@ function Movies() {
           return <MovieCard movieObj={movieObj}/>
         })}
       </div>
+
+      <Pagination/>
     </div>
   );
 }
