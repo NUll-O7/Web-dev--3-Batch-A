@@ -10,6 +10,16 @@ function Movies() {
   const [movies , setMovies] = useState([])
   const [pageNo , setPageNo] = useState(1)
 
+  function pageNext(){
+    setPageNo(pageNo+1)
+  }
+
+  function pagePrev(){
+    if(pageNo>1){
+      setPageNo(pageNo-1)
+    }
+   
+  }
 
 
 
@@ -26,7 +36,7 @@ function Movies() {
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  }, [pageNo]);
 
  
 
@@ -41,7 +51,7 @@ function Movies() {
         })}
       </div>
 
-      <Pagination/>
+      <Pagination pageNumber={pageNo} nextPageFn={pageNext} prevPageFn={pagePrev}/>
     </div>
   );
 }
