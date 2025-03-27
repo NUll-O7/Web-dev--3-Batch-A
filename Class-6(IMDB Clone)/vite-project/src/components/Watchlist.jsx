@@ -1,7 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { genreids } from "../utlities/genres";
+
 
 function Watchlist({ watchlist }) {
-
+   const [search , setSearch] = useState('')
 
   return (
     <>
@@ -14,6 +16,9 @@ function Watchlist({ watchlist }) {
           placeholder="Search Movies"
           className="h-[3rem] w-[18rem] bg-gray-200 px-4 outline-none border border-slate-600"
           type="text"
+          value={search}
+          onChange={(e)=>setSearch(e.target.value)}
+         
          
         />
       </div>
@@ -33,7 +38,9 @@ function Watchlist({ watchlist }) {
           </thead>
 
           <tbody>
-            {watchlist.map((movieObj) => {
+            {watchlist.filter((movieObj)=>{
+              return movieObj.title.toLowerCase().includes(search.toLowerCase())
+            }).map((movieObj) => {
               return (
                 <tr className="border-b-2">
                   <td className="flex items-center px-6 py-4">
@@ -46,7 +53,7 @@ function Watchlist({ watchlist }) {
 
                   <td>{movieObj.vote_average}</td>
                   <td>{movieObj.popularity}</td>
-                  <td>Action</td>
+                  <td>{genreids[movieObj.genre_ids[0]]}</td>
 
                   <td className="text-red-500">Delete</td>
                 </tr>
