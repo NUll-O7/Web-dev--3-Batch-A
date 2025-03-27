@@ -1,13 +1,41 @@
 import React, { useEffect, useState } from "react";
 import { genreids } from "../utlities/genres";
 
-
 function Watchlist({ watchlist }) {
-   const [search , setSearch] = useState('')
+  const [search, setSearch] = useState("");
+  const [currGenre, setCurrGenre] = useState('All Genres')
+  const [genreList , setGenreList] = useState([])
+
+  useEffect(()=>{
+      let genresWithDuplicacy = watchlist.map((movieObj)=>{
+        return genreids[movieObj.genre_ids[0]]
+      })
+      console.log(genresWithDuplicacy)
+
+     const genres =  new Set(genresWithDuplicacy)
+
+     console.log(["All Genres" , ...genres])
+
+     setGenreList(["All Genres" , ...genres])
+      
+     
+  }, [watchlist])
+
+
 
   return (
     <>
       {/* Genre Based Filtering */}
+
+      <div className="flex justify-center m-4">
+        <div
+          className={
+            "mx-4 flex justify-center items-center bg-blue-400 h-[3rem] w-[9rem] text-white font-bold border rounded-xl"
+          }
+        >
+         {currGenre}
+        </div>
+      </div>
 
       {/* Search Field */}
 
@@ -17,9 +45,7 @@ function Watchlist({ watchlist }) {
           className="h-[3rem] w-[18rem] bg-gray-200 px-4 outline-none border border-slate-600"
           type="text"
           value={search}
-          onChange={(e)=>setSearch(e.target.value)}
-         
-         
+          onChange={(e) => setSearch(e.target.value)}
         />
       </div>
 
@@ -38,27 +64,31 @@ function Watchlist({ watchlist }) {
           </thead>
 
           <tbody>
-            {watchlist.filter((movieObj)=>{
-              return movieObj.title.toLowerCase().includes(search.toLowerCase())
-            }).map((movieObj) => {
-              return (
-                <tr className="border-b-2">
-                  <td className="flex items-center px-6 py-4">
-                    <img
-                      className="h-[6rem] w-[10rem]"
-                      src={`https://image.tmdb.org/t/p/original/${movieObj.poster_path}`}
-                    />
-                    <div className="mx-10">{movieObj.title}</div>
-                  </td>
+            {watchlist
+              .filter((movieObj) => {
+                return movieObj.title
+                  .toLowerCase()
+                  .includes(search.toLowerCase());
+              })
+              .map((movieObj) => {
+                return (
+                  <tr className="border-b-2">
+                    <td className="flex items-center px-6 py-4">
+                      <img
+                        className="h-[6rem] w-[10rem]"
+                        src={`https://image.tmdb.org/t/p/original/${movieObj.poster_path}`}
+                      />
+                      <div className="mx-10">{movieObj.title}</div>
+                    </td>
 
-                  <td>{movieObj.vote_average}</td>
-                  <td>{movieObj.popularity}</td>
-                  <td>{genreids[movieObj.genre_ids[0]]}</td>
+                    <td>{movieObj.vote_average}</td>
+                    <td>{movieObj.popularity}</td>
+                    <td>{genreids[movieObj.genre_ids[0]]}</td>
 
-                  <td className="text-red-500">Delete</td>
-                </tr>
-              );
-            })}
+                    <td className="text-red-500">Delete</td>
+                  </tr>
+                );
+              })}
           </tbody>
         </table>
       </div>
