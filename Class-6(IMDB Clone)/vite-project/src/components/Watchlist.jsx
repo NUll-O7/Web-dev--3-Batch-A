@@ -9,6 +9,15 @@ function Watchlist({ watchlist }) {
 
       {/* Search Field */}
 
+      <div className="flex justify-center my-10">
+        <input
+          placeholder="Search Movies"
+          className="h-[3rem] w-[18rem] bg-gray-200 px-4 outline-none border border-slate-600"
+          type="text"
+         
+        />
+      </div>
+
       {/* Watchlist Table */}
 
       <div className="m-8">
