@@ -1,9 +1,12 @@
 import React from "react";
+// Child 2 wants to go to merryGoRound
+function Child2({rules , ticket}) {
 
-function Child2() {
+
   return (
     <div className="children">
-      <h3>Child2 </h3>
+      <h3>Child2 {rules} </h3>
+      <h5>{ticket()}</h5>
     </div>
   );
 }

@@ -1,7 +1,6 @@
 import "./App.css";
 import Parent1 from "./components/Parent1";
 
-
 function App() {
   const parkInfo = {
     parkName: "Imagica Amusement park",
@@ -25,9 +24,7 @@ function App() {
 
   return (
     <>
-      
-        <Parent1/>
-      
+      <Parent1 parkInformation={parkInfo} />
     </>
   );
 }
