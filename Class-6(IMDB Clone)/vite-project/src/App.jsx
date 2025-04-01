@@ -6,6 +6,8 @@ import NavBar from "./components/Navbar";
 import Recommendation from "./components/Recommendation";
 import Watchlist from "./components/Watchlist";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { MovieContext } from "./context/MovieContext";
+
 
 function App() {
 
@@ -29,6 +31,7 @@ useEffect(()=>{
 
   return (
     <div>
+    <MovieContext.Provider value={{watchlist , handleAddToWatchList}}>
       <BrowserRouter>
         <NavBar />
 
@@ -38,7 +41,7 @@ useEffect(()=>{
             element={
               <>
                 <Banner />
-                <Movies handleAddtoWatchList={handleAddToWatchList} watchlist={watchlist} />
+                <Movies  />
               </>
             }
           />
@@ -46,6 +49,7 @@ useEffect(()=>{
           <Route path="/recommend" element={<Recommendation />} />
         </Routes>
       </BrowserRouter>
+      </MovieContext.Provider>
     </div>
   );
 }

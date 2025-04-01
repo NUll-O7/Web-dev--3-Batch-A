@@ -1,13 +1,19 @@
 import React, { useState } from "react";
+import { useContext } from "react";
+import { MovieContext } from "../context/MovieContext";
 
-function MovieCard({ movieObj, handleAddToWatchList, watchlist }) {
+
+function MovieCard({ movieObj}) {
   // function which will check if
   // the movie exists inside the watchlist
   // if movie is found return true - X
   // if movie is not found return false - addition
 
+ const {watchlist , handleAddToWatchList} =  useContext(MovieContext)
+
+
   function doesContain() {
-    for (let i = 0; i < watchlist.length; i++) {
+    for (let i = 0; i <watchlist.length; i++) {
       if (watchlist[i].id === movieObj.id) {
         return true;
       }
@@ -29,7 +35,7 @@ function MovieCard({ movieObj, handleAddToWatchList, watchlist }) {
           </div>
         ) : (
           <div
-            onClick={() => handleAddToWatchList(movieObj)}
+            onClick={() =>handleAddToWatchList(movieObj)}
             className="flex items-center justify-center h-8 w-8 rounded-lg bg-gray-900/60 text-white text-lg"
           >
             &#128525;
