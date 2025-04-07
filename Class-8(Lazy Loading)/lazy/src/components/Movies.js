@@ -1,22 +1,22 @@
-import React, { useState } from 'react'
-import { movies } from './movieData'
+import React, { useState } from "react";
 
 
 function Movies() {
-  const [movieData , setMovieData]=useState([])
+  const [movieData, setMovieData] = useState([]);
 
+  function getData() {
+    import('./movieData.js').then((module)=>{
+       setMovieData(JSON.stringify(module.movies));
+    })
 
-  function getData(){
-    setMovieData(JSON.stringify(movies))
   }
-
 
   return (
     <div>
       <button onClick={getData}>Get Data</button>
-       <h4>{movieData}</h4>
+      <h3>{movieData}</h3>
     </div>
-  )
+  );
 }
 
-export default Movies
+export default Movies;
