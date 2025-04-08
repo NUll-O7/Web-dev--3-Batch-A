@@ -7,7 +7,7 @@ function MovieCard({ movieObj}) {
   // function which will check if
   // the movie exists inside the watchlist
   // if movie is found return true - X
-  // if movie is not found return false - addition
+  // if movie is not found return false - additionw
 
  const {watchlist , handleAddToWatchList} =  useContext(MovieContext)
 
