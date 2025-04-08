@@ -1,17 +1,37 @@
 import React, { useState } from "react";
-import { books } from "./booksData";
+import Name from "./Name";
 
 function Books() {
   const [booksData, setBooks] = useState(null);
+  const [nameComponent , setNameComponent]= useState(null)
 
   function getData() {
-    setBooks(JSON.stringify(books));
+    import("./booksData").then((module) => {
+      setBooks(JSON.stringify(module.books));
+    });
   }
+
+  function getComponent(){
+    const importComponent = async () => {
+        const module = await import('./Name.js');
+        console.log(module)
+
+         const NameComponent = module.default;
+         setNameComponent(<NameComponent />);
+  }
+  importComponent()
+}
+
+
 
   return (
     <>
       <button onClick={getData}>Get Books Data</button>
       <div>{booksData}</div>
+
+      
+      <button onClick={getComponent}>Get Component</button>
+      {nameComponent}
     </>
   );
 }
