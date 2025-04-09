@@ -3,6 +3,7 @@ import { useState , useCallback} from 'react'
 import './App.css'
 import Memo from './components/Memo'
 import Child from './components/Child'
+import Ref from './components/Ref'
 
 function App() {
 
@@ -21,12 +22,15 @@ function App() {
   return (
     <>
       {/* <Memo/> */}
-
+{/* 
      <button onClick={()=>setCount(count+1)}>Increment</button>
 
-      <h1>{count}</h1>
+      <h1>{count}</h1> */}
 
-      <Child buttonName='Say Bye' sayHelloFn={sayHello}/>
+      {/* <Child buttonName='Say Bye' sayHelloFn={sayHello}/> */}
+
+
+      <Ref/>
       
     </>
   )
